@@ -5,6 +5,9 @@ const { query } = require("express");
 const geocode = require("./utils/geocode");
 const forecast = require("./utils/forecast");
 
+const app = express();
+const port = process.env.PORT || 3000;
+
 console.log(__dirname);
 console.log(path.join(__dirname, "../public/index.html"));
 
@@ -13,8 +16,6 @@ const publicDirectoryPath = path.join(__dirname, "../public");
 const viewsPath = path.join(__dirname, "../templates/views");
 const partialsPath = path.join(__dirname, "../templates/partials");
 console.log(viewsPath);
-
-const app = express();
 
 // Setup handlebars engine and views location
 app.set("view engine", "hbs");
@@ -60,10 +61,6 @@ app.get("/weather", (req, res) => {
 			}
 		}
 	);
-});
-
-app.listen(3000, () => {
-	console.log("Server is up on port 3000");
 });
 
 app.get("", (req, res) => {
@@ -118,4 +115,8 @@ app.get("*", (req, res) => {
 	res.render("404handler", {
 		message: "Page not found",
 	});
+});
+
+app.listen(port, () => {
+	console.log(`Server is up on port ${port}`);
 });

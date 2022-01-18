@@ -174,7 +174,8 @@ footer .container {
 
 .weather-content .row .column1 {
 	text-align: center;
-	background: red;
+	background: lightblue;
+	color: #333;
 }
 
 .weather-content .row .column2 {
